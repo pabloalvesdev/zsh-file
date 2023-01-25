@@ -87,3 +87,10 @@ for i in "${!EXTlist[@]}"; do
     # echo "Key: $i value: ${EXTlist[$i]}"
     echo '{"external_update_url": "https://clients2.google.com/service/update2/crx"}' > /opt/google/chrome/extensions/${EXTlist[$i]}.json
 done
+
+#Install Yarn
+echo "================================ Install Yarn ================================"
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install yarn
+
