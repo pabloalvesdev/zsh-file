@@ -146,4 +146,3 @@ SPACESHIP_CHAR_SUFFIX=" "
 
 # hide % on start
 unsetopt PROMPT_SP
-modificado
