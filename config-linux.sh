@@ -94,6 +94,17 @@ curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update && sudo apt install yarn
 
+# Install JAVA
+sudo apt install openjdk-11-jre-headless
+
+# Install Watchman
+echo "================================Download Watchman================================"
+wget -O ~/Downloads/watchman-installer https://github.com/facebook/watchman/releases/download/v2023.03.06.00/watchman_ubuntu22.04_v2023.03.06.00.deb
+echo "================================Install Discord================================"
+sudo dpkg -i ~/Downloads/watchman-installer
+echo "================================Delete Discord================================"
+rm ~/Downloads/watchman-installer
+
 # Install pgAdmin
 # Install the public key for the repository (if not done previously):
 curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
