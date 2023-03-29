@@ -4,7 +4,7 @@
 sudo apt upgrade
 
 # Papel de parede
-gsettings set org.gnome.desktop.background picture-uri 'https://r4.wallpaperflare.com/wallpaper/630/403/749/bixby-creek-bridge-bridge-big-sur-california-wallpaper-791078cd611a7dfb8617a80f0091860d.jpg'
+gsettings set org.gnome.desktop.background picture-uri 'https://r4.wallpaperflare.com/wallpaper/979/207/688/groot-guardians-of-the-galaxy-marvel-cinematic-universe-marvel-comics-minimalism-hd-wallpaper-895078ddd1ba6d9bd657f8df60e1663d.jpg'
 
 # Chrome
 echo "================================Download Chrome...================================"
