@@ -1,5 +1,5 @@
 #!/bin/bash
-targets=("1.Google" "2.VS Code" "3.Hyper" "4.Node" "5.React Native" "6.Yarn")
+targets=("1.Google" "2.VS Code" "3.Hyper" "4.Node" "5.React Native" "6.Yarn" "7.ZSH")
 
 resultado=""
 
@@ -101,13 +101,31 @@ config_yarn() {
     sudo apt update && sudo apt install yarn
 }
 config_hyper() {
-    ULR="https://releases.hyper.is/download/deb"
+    url="https://releases.hyper.is/download/deb"
     echo "================================Download Hyper...================================"
-    wget -O ~/Downloads/hyper-installer $URL
+    wget -O ~/Downloads/hyper-installer $url
     echo "================================Install Hyper...================================"
     sudo dpkg -i ~/Downloads/hyper-installer
     echo "================================Delete Hyper...================================"
     rm ~/Downloads/hyper-installer
+}
+config_zsh() {
+    echo "Install ZSH, Git, Curl..."
+    sudo apt install zsh
+    sudo apt install curl
+    sudo apt install git
+    echo "Config ZSH"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+    git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+    ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+    sudo rm ~/.zshrc
+    sleep 10
+    echo "Alterando arquivo zshrc"
+    wget -O ~/.zshrc https://raw.githubusercontent.com/pabloalvesdev/zsh-file/master/.zshrc
+    chsh -s $(which zsh)
+    sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /opt/Hyper/hyper 50
+    hyper install hyper-custom-controls
 }
 
 case $option in
@@ -134,6 +152,10 @@ case $option in
     "6")
         echo "Configurando YARN..."
         config_yarn
+        ;;
+    "7")
+        echo "Configurando ZSH..."
+        config_zsh
         ;;
     *)
         echo "Opção inválida"
