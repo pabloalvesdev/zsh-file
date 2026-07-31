@@ -74,6 +74,7 @@ if [ "$(docker ps -a -q -f name=meu-postgres)" ]; then
 fi
 
 docker run --name meu-postgres \
+  --restart unless-stopped \
   -e POSTGRES_USER="$PG_USER" \
   -e POSTGRES_PASSWORD="$PG_PASS" \
   -e POSTGRES_DB="$PG_DB" \
