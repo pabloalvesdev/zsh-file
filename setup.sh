@@ -81,7 +81,15 @@ docker run --name meu-postgres \
   -p 5432:5432 \
   -d postgres:latest
 
-echo "=== 6. Instalando o Waydroid ==="
+echo "=== 6. Instalando o FocalBoard ==="
+docker run -d \
+  --name focalboard \
+  --restart unless-stopped \
+  -p 8000:8000 \
+  -v ~/docker/focalboard/data:/opt/focalboard/data \
+  mattermost/focalboard
+
+echo "=== 7. Instalando o Waydroid ==="
 
 sudo apt install curl ca-certificates -y
 curl -s https://repo.waydro.id | sudo bash
